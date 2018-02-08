@@ -1,0 +1,43 @@
+group 'anyang.study'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+//  Root ==================================
+    springVersion = '5.0.3.RELEASE'
+    servletVersion = '4.0.0'
+    handelbarViewResolverVersion = '4.0.6'
+
+//  Util ==================================
+    lombokVersion = '1.16.10'
+    guavaVersion = '19.0'
+
+//  Logging ===============================
+    slf4jVersion = '1.7.21'
+    logbackVersion = '1.1.7'
+
+//  Test ==================================
+    junitVerison = '4.12'
+}
+
+dependencies {
+    compile("org.springframework:spring-webmvc:${springVersion}")
+    compile("javax.servlet:javax.servlet-api:${servletVersion}")
+    compile("com.github.jknack:handlebars-springmvc:${handelbarViewResolverVersion}")
+
+    compile("org.projectlombok:lombok:${lombokVersion}")
+    compile("com.google.guava:guava:${guavaVersion}")
+
+    runtime("org.slf4j:jcl-over-slf4j:${slf4jVersion}")
+    runtime("ch.qos.logback:logback-classic:${logbackVersion}")
+
+    testCompile("junit:junit:${junitVerison}")
+}
